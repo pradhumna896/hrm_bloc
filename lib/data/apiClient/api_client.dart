@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import '../../core/constants/session_manager.dart';
 import 'app_exceptions.dart';
@@ -160,7 +161,7 @@ class NetworkHttpServices extends BaseHttpServices {
         throw BadRequestException(errorMessage);
       case 401:
       case 422:
-        throw unauthorizedDialog();
+        throw UnAutherized(errorMessage);
       case 500:
         throw InternalServerException(errorMessage);
       default:
@@ -169,5 +170,5 @@ class NetworkHttpServices extends BaseHttpServices {
     }
   }
 
-  unauthorizedDialog() {}
+ 
 }

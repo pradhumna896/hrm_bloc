@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/app_export.dart';
 
@@ -222,19 +223,19 @@ class _CustomDropdownState extends State<CustomDropdown> {
                     ),
                     dropdownBuilder: (context, selectedItem) {
                       return Text(selectedItem ?? widget.labelText,
-                          style: const TextStyle(
+                          style:  TextStyle(
                               color: Colors.black,
-                              fontSize: 16,
+                              fontSize: 16.h,
                               fontWeight: FontWeight.w500));
                     },
                     popupItemBuilder: (context, item, isSelected) {
                       return Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 30),
+                        padding:  EdgeInsets.symmetric(
+                            vertical: 10.w, horizontal: 30.w),
                         child: Text(item.toString(),
-                            style: const TextStyle(
+                            style:  TextStyle(
                                 color: Colors.black,
-                                fontSize: 16,
+                                fontSize: 16.h,
                                 fontWeight: FontWeight.w500)),
                       );
                     },
@@ -271,20 +272,20 @@ class _CustomDropdownState extends State<CustomDropdown> {
       isDense: isDense ?? false,
       errorText: errorText,
       hintText: hintText,
-      hintStyle: const TextStyle(
-          color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
-      errorStyle: const TextStyle(
-          color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
+      hintStyle:  TextStyle(
+          color: Colors.black, fontSize: 16.sp, fontWeight: FontWeight.w500),
+      errorStyle:  TextStyle(
+          color: Colors.black, fontSize: 16.sp, fontWeight: FontWeight.w500),
       prefixIcon: isPrefixIcon == false
           ? null
           : Padding(
-              padding: EdgeInsets.only(top: 20, bottom: 20),
+              padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
               child: prefixIcon,
             ),
       suffixIcon: Padding(
         padding: EdgeInsets.only(
-          top: 20,
-          bottom: 20,
+          top: 20.h,
+          bottom: 20.h,
         ),
         child: suffixIcon,
       ),

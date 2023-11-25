@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_bloc.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_event.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_state.dart';
@@ -66,8 +67,8 @@ class _AddBoardScreenState extends State<AddBoardScreen> {
                 alignment: Alignment.center,
                 children: [
                   Column(children: [
-                    const SizedBox(
-                      height: 20,
+                     SizedBox(
+                      height: 20.h,
                     ),
                     CustomDropdown(
                       labelText: "projects",
@@ -85,12 +86,11 @@ class _AddBoardScreenState extends State<AddBoardScreen> {
                           if (ele['project_name'] == value) {
                             projectId = ele['id'].toString();
                           }
-                          print(projectId);
                         }
                       },
                     ),
-                    const SizedBox(
-                      height: 20,
+                     SizedBox(
+                      height: 20.h,
                     ),
                     TextFormField(
                       controller: titleController,
@@ -99,8 +99,8 @@ class _AddBoardScreenState extends State<AddBoardScreen> {
                         border: OutlineInputBorder(),
                       ),
                     ),
-                    const SizedBox(
-                      height: 20,
+                     SizedBox(
+                      height: 20.h,
                     ),
                     ElevatedButton(
                         onPressed: () {

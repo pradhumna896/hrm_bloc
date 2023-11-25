@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import '../../core/constants/session_manager.dart';
+
 class AppExceptions implements Exception {
   final _message;
   final _prefix;
@@ -11,8 +15,7 @@ class AppExceptions implements Exception {
 }
 
 class InternalServerException extends AppExceptions {
-  InternalServerException([String? message])
-      : super(message, "Error: ");
+  InternalServerException([String? message]) : super(message, "Error: ");
 }
 
 class BadRequestException extends AppExceptions {
@@ -29,4 +32,8 @@ class NoInternetException extends AppExceptions {
 
 class RequestTimeOut extends AppExceptions {
   RequestTimeOut([String? message]) : super(message, "Request Time Out: ");
+}
+
+class UnAutherized extends AppExceptions {
+    UnAutherized([String? message]) : super(message, "Request Time Out: ");
 }

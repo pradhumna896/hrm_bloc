@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrm_bloc/presentation/assessment/board/add_board_screen.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_bloc.dart';
 import 'package:hrm_bloc/presentation/assessment/board/board_screen.dart';
@@ -24,33 +25,35 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AuthBloc>(
-          create: (_) => AuthBloc(),
+    return ScreenUtilInit(
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AuthBloc>(
+            create: (_) => AuthBloc(),
+          ),
+          BlocProvider<UserBloc>(create: (_) => UserBloc()),
+          BlocProvider<HomeBloc>(create: (_) => HomeBloc()),
+          BlocProvider<BoardBloc>(create: (_) => BoardBloc()),
+    
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+            useMaterial3: true,
+          ),
+          initialRoute: SessionManager.getToken() == null ?'/login' : '/home',
+          routes: {
+            '/login': (context) => LoginScreen(),
+            '/home': (context) => HomePage(),
+            "/users": (context) => UsersScreen(),
+            "/add_user": (context) => AddUserScreen(),
+            "/board": (context) => BoardScreen(),
+            "/add_board": (context) => AddBoardScreen(),
+    
+          },
         ),
-        BlocProvider<UserBloc>(create: (_) => UserBloc()),
-        BlocProvider<HomeBloc>(create: (_) => HomeBloc()),
-        BlocProvider<BoardBloc>(create: (_) => BoardBloc()),
-
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
-          useMaterial3: true,
-        ),
-        initialRoute: SessionManager.getToken() == null ?'/login' : '/home',
-        routes: {
-          '/login': (context) => LoginScreen(),
-          '/home': (context) => HomePage(),
-          "/users": (context) => UsersScreen(),
-          "/add_user": (context) => AddUserScreen(),
-          "/board": (context) => BoardScreen(),
-          "/add_board": (context) => AddBoardScreen(),
-
-        },
       ),
     );
   }

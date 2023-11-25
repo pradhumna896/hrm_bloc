@@ -75,8 +75,8 @@ class _BoardScreenState extends State<BoardScreen> {
                         ),
                         IconButton(
                           onPressed: () {
-                            _boardBloc.add(BoardUpdateNavEvent(
-                                user: users[index]));
+                            _boardBloc
+                                .add(BoardUpdateNavEvent(user: users[index]));
                           },
                           icon: const Icon(
                             Icons.edit,
@@ -110,8 +110,7 @@ class _BoardScreenState extends State<BoardScreen> {
               Navigator.pushNamed(context, '/add_board');
             }
             if (state is BoardStateUpdateNav) {
-              Navigator.pushNamed(context, '/add_board',
-                  arguments: state.user);
+              Navigator.pushNamed(context, '/add_board', arguments: state.user);
             }
             if (state is BoardStateDelete) {
               Navigator.pushNamedAndRemoveUntil(
