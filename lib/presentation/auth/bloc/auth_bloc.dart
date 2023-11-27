@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrm_bloc/core/constants/api_network.dart';
 import '../../../core/constants/session_manager.dart';
@@ -38,7 +37,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         var value = await api.post(ApiNetwork.loginVerify, payload, false);
         if (value["success"] == true) {
           var jsonData = json.encode(value['payload']);
-
           await SessionManager.setToken(value['payload']['token']['token']);
           await SessionManager.setUser(jsonData);
           await SessionManager.setUserId(value["payload"]["id"].toString());

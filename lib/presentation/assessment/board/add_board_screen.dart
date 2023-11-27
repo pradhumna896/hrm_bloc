@@ -59,6 +59,14 @@ class _AddBoardScreenState extends State<AddBoardScreen> {
               Navigator.pushNamedAndRemoveUntil(
                   context, '/board', (route) => false);
             }
+            if(state is BoardStateError){
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.message),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
           },
           builder: (context, state) {
             return Container(

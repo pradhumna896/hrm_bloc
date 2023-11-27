@@ -6,7 +6,7 @@ import 'package:hrm_bloc/presentation/home/bloc/home_state.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
@@ -22,36 +22,7 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.menu),
             ),
           ),
-          drawer: Drawer(
-            child: ListView(
-              children: [
-                const DrawerHeader(
-                  child: Text('Drawer Header'),
-                ),
-                ListTile(
-                  title: const Text('Users'),
-                  onTap: () {
-                    BlocProvider.of<HomeBloc>(context)
-                        .add(UserNavigationEvent());
-                  },
-                ),
-                ListTile(
-                  title: const Text('Board'),
-                  onTap: () {
-                    BlocProvider.of<HomeBloc>(context)
-                        .add(BoardNavigationEvent());
-                  },
-                ),
-              ],
-            ),
-          ),
-          body: Center(
-            child: InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, '/users');
-                },
-                child: Text('Home Page')),
-          ),
+          drawer: _buildDrawer(context),
         );
       },
       listener: (context, state) {
@@ -62,9 +33,34 @@ class HomePage extends StatelessWidget {
           Navigator.pushNamed(context, '/users');
         }
         if (state is BoardNavigationState) {
-          Navigator.pushNamed(context, '/board');
+          Navigator.pushNamed(context, '/boards');
         }
       },
+    );
+  }
+
+// Open Drawer
+  Drawer _buildDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: [
+          const DrawerHeader(
+            child: Text('Drawer Header'),
+          ),
+          ListTile(
+            title: const Text('Users'),
+            onTap: () {
+              BlocProvider.of<HomeBloc>(context).add(UserNavigationEvent());
+            },
+          ),
+          ListTile(
+            title: const Text('Board'),
+            onTap: () {
+              BlocProvider.of<HomeBloc>(context).add(BoardNavigationEvent());
+            },
+          ),
+        ],
+      ),
     );
   }
 }

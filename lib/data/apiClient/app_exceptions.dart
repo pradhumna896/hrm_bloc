@@ -35,5 +35,5 @@ class RequestTimeOut extends AppExceptions {
 }
 
 class UnAutherized extends AppExceptions {
-    UnAutherized([String? message]) : super(message, "Request Time Out: ");
+    UnAutherized([String? message]) : super(message, "");
 }

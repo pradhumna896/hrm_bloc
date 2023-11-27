@@ -3,9 +3,9 @@ class ApiNetwork {
   // static const String baseUrl = "https://hrm-api.threemad.com/api/";
   // static const String imageUrl = "https://hrm-api.threemad.com/";
   // static const String fileDownloadUrl = "https://hrm-api.threemad.com/";
-  static const String baseUrl = "http://192.168.1.54:1987/api/";
-  static const String imageUrl = "http://192.168.1.54:1987/";
-  static const String fileDownloadUrl = "http://192.168.1.54:1987/";
+  static const String baseUrl = "http://192.168.1.18:1987/api/";
+  static const String imageUrl = "http://192.168.1.18:1987/";
+  static const String fileDownloadUrl = "http://192.168.1.18:1987/";
 
   // LOGIN
   static const String login = "${baseUrl}login";
