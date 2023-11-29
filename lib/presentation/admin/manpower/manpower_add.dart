@@ -81,7 +81,7 @@ class _ManpowerAddState extends State<ManpowerAdd> {
             builder: (context, state) {
               if (state is GetManpowerListFailed) {
                 ScaffoldMessenger.of(context)
-                   .showSnackBar(SnackBar(content: Text(state.message)));
+                    .showSnackBar(SnackBar(content: Text(state.message)));
               }
               return BlocBuilder<RoleDropdownBloc, RoleDropdownState>(
                   bloc: _roleDropdownBloc,

@@ -24,20 +24,16 @@ class _EmployeeDetailState extends State<EmployeeDetail> {
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-      body: Container(
-        child: Column(children: [
-          DetailWidget(users: users),
-          Container(
-            child: Column(
-              children: [
-                _buildTabOption(() {}, "Task"),
-                _buildTabOption(() {}, "Project"),
-                _buildTabOption(() {}, "Attendance"),
-              ],
-            ),
-          )
-        ]),
-      ),
+      body: Column(children: [
+        DetailWidget(users: users),
+        Column(
+          children: [
+            _buildTabOption(() {}, "Task"),
+            _buildTabOption(() {}, "Project"),
+            _buildTabOption(() {}, "Attendance"),
+          ],
+        )
+      ]),
     );
   }
 
