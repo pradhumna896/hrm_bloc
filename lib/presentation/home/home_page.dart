@@ -59,6 +59,16 @@ class HomePage extends StatelessWidget {
               BlocProvider.of<HomeBloc>(context).add(BoardNavigationEvent());
             },
           ),
+          ListTile(
+            title: const Text('manpower'),
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/manpower',
+                (route) => false,
+              );
+            },
+          ),
         ],
       ),
     );

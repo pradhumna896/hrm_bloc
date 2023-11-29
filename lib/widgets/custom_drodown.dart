@@ -141,7 +141,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
                             ),
                             Text(
                               item.toString(),
-                              style: const TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 14.sp),
                             ),
                           ],
                         ),
@@ -165,18 +165,18 @@ class _CustomDropdownState extends State<CustomDropdown> {
                             ),
                             Text(
                               item.toString(),
-                              style: const TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 14.sp),
                             ),
                           ],
                         ),
                       );
                     },
                     // popup title
-                    popupTitle: const Center(
+                    popupTitle: Center(
                       child: Text(
                         'Select one or more option',
                         style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                            fontSize: 14.sp, fontWeight: FontWeight.bold),
                       ),
                     ),
 
@@ -223,19 +223,19 @@ class _CustomDropdownState extends State<CustomDropdown> {
                     ),
                     dropdownBuilder: (context, selectedItem) {
                       return Text(selectedItem ?? widget.labelText,
-                          style:  TextStyle(
+                          style: TextStyle(
                               color: Colors.black,
-                              fontSize: 16.h,
-                              fontWeight: FontWeight.w500));
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w400));
                     },
                     popupItemBuilder: (context, item, isSelected) {
                       return Container(
-                        padding:  EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                             vertical: 10.w, horizontal: 30.w),
                         child: Text(item.toString(),
-                            style:  TextStyle(
+                            style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 16.h,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.w500)),
                       );
                     },
@@ -272,10 +272,10 @@ class _CustomDropdownState extends State<CustomDropdown> {
       isDense: isDense ?? false,
       errorText: errorText,
       hintText: hintText,
-      hintStyle:  TextStyle(
-          color: Colors.black, fontSize: 16.sp, fontWeight: FontWeight.w500),
-      errorStyle:  TextStyle(
-          color: Colors.black, fontSize: 16.sp, fontWeight: FontWeight.w500),
+      hintStyle: TextStyle(
+          color: Colors.black, fontSize: 14.sp, fontWeight: FontWeight.w500),
+      errorStyle: TextStyle(
+          color: Colors.black, fontSize: 14.sp, fontWeight: FontWeight.w500),
       prefixIcon: isPrefixIcon == false
           ? null
           : Padding(

@@ -3,9 +3,9 @@ class ApiNetwork {
   // static const String baseUrl = "https://hrm-api.threemad.com/api/";
   // static const String imageUrl = "https://hrm-api.threemad.com/";
   // static const String fileDownloadUrl = "https://hrm-api.threemad.com/";
-  static const String baseUrl = "http://192.168.1.18:1987/api/";
-  static const String imageUrl = "http://192.168.1.18:1987/";
-  static const String fileDownloadUrl = "http://192.168.1.18:1987/";
+  static const String baseUrl = "http://192.168.1.6:1987/api/";
+  static const String imageUrl = "http://192.168.1.6:1987/";
+  static const String fileDownloadUrl = "http://192.168.1.6:1987/";
 
   // LOGIN
   static const String login = "${baseUrl}login";
@@ -26,6 +26,7 @@ class ApiNetwork {
   static const String roleDelete = "${baseUrl}role/delete/";
   static const String createUser = "${baseUrl}user/create";
   static const String userDelete = "${baseUrl}user/delete/";
+  static const String roleDropdown = "${baseUrl}role-dropdown";
 
   // TASK
   static const String tasks = "${baseUrl}tasks";
@@ -55,6 +56,8 @@ class ApiNetwork {
   static const String createDepartment = "${baseUrl}department";
   static const String departmentDelete = "${baseUrl}department/";
   static const String updateDepartment = "${baseUrl}department/";
+  static const String departmentDropdown = "${baseUrl}department-dropdown";
+
   //Discipline
   static const String discipline = "${baseUrl}disciplines";
   static const String createDiscipline = "${baseUrl}discipline";

@@ -1,5 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hrm_bloc/blocs/department_dropdown/dept_dropdown_bloc.dart';
+import 'package:hrm_bloc/blocs/role_dropdown/role_dropdown_bloc.dart';
 import 'package:hrm_bloc/core/app_export.dart';
+import 'package:hrm_bloc/presentation/admin/manpower/bloc/manpower_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/manpower/employee_detail.dart';
+import 'package:hrm_bloc/presentation/admin/manpower/manpower_add.dart';
+import 'package:hrm_bloc/presentation/admin/manpower/manpower_screen.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_bloc.dart';
 import 'package:hrm_bloc/presentation/assessment/board/board_screen.dart';
 import 'package:hrm_bloc/presentation/auth/bloc/auth_bloc.dart';
@@ -33,18 +39,37 @@ class AppPages {
       ),
       PageEntity(
         path: AppRoutes.USERS,
-        page: UsersScreen(),
+        page: const UsersScreen(),
         bloc: BlocProvider(
           create: (context) => UserBloc(),
         ),
       ),
       PageEntity(
         path: AppRoutes.BOARDS,
-        page: BoardScreen(),
+        page: const BoardScreen(),
         bloc: BlocProvider(
           create: (context) => BoardBloc(),
         ),
       ),
+      PageEntity(
+        path: AppRoutes.MANPOWER,
+        page: const ManpowerScreen(),
+        bloc: BlocProvider(
+          create: (context) => ManpowerBloc(),
+        ),
+      ),
+      PageEntity(
+          path: AppRoutes.EMPLOYEE_DETAILS,
+          page: const EmployeeDetail(),
+          bloc: BlocProvider(
+            create: (context) => DeptDropdownBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.MANPOWER_ADD,
+          page: const ManpowerAdd(),
+          bloc: BlocProvider(
+            create: (context) => RoleDropdownBloc(),
+          )),
     ];
   }
 
