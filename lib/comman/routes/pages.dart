@@ -2,10 +2,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hrm_bloc/blocs/department_dropdown/dept_dropdown_bloc.dart';
 import 'package:hrm_bloc/blocs/role_dropdown/role_dropdown_bloc.dart';
 import 'package:hrm_bloc/core/app_export.dart';
+import 'package:hrm_bloc/presentation/admin/departments/blocs/department/department_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/departments/screen/add_department_screen.dart';
+import 'package:hrm_bloc/presentation/admin/departments/screen/department_screen.dart';
 import 'package:hrm_bloc/presentation/admin/manpower/bloc/manpower_bloc.dart';
 import 'package:hrm_bloc/presentation/admin/manpower/employee_detail.dart';
 import 'package:hrm_bloc/presentation/admin/manpower/manpower_add.dart';
 import 'package:hrm_bloc/presentation/admin/manpower/manpower_screen.dart';
+import 'package:hrm_bloc/presentation/admin/projects/blocs/add_project/add_project_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/projects/blocs/project/project_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/projects/screen/add_project_screen.dart';
+import 'package:hrm_bloc/presentation/admin/projects/screen/project_screen.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_bloc.dart';
 import 'package:hrm_bloc/presentation/assessment/board/board_screen.dart';
 import 'package:hrm_bloc/presentation/auth/bloc/auth_bloc.dart';
@@ -70,6 +77,31 @@ class AppPages {
           bloc: BlocProvider(
             create: (context) => RoleDropdownBloc(),
           )),
+      PageEntity(
+          path: AppRoutes.DEPARTMENT,
+          page: const DepartmentScreen(),
+          bloc: BlocProvider(
+            create: (context) => DepartmentBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.DEPARTMENT_ADD,
+          page: const AddDepartment(),
+          bloc: BlocProvider(
+            create: (context) => DepartmentBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.PROJECT,
+          page: const ProjectScreen(),
+          bloc: BlocProvider(
+            create: (context) => ProjectBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.PROJECT_ADD,
+          page: const AddProject(),
+          bloc: BlocProvider(
+            create: (context) => AddProjectBloc(),
+          )),
+
     ];
   }
 

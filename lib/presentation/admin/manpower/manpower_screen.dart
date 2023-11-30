@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hrm_bloc/core/app_export.dart';
 import 'package:hrm_bloc/presentation/admin/manpower/bloc/manpower_bloc.dart';
 import 'package:hrm_bloc/presentation/admin/manpower/bloc/manpower_event.dart';
-import 'package:hrm_bloc/presentation/admin/manpower/model/Employee_model.dart';
+
 import 'package:hrm_bloc/presentation/admin/manpower/model/manpower_model.dart';
 
 import '../../../widgets/custom_loader.dart';
@@ -41,8 +41,14 @@ class _ManpowerScreenState extends State<ManpowerScreen> {
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-      body: BlocBuilder<ManpowerBloc, ManpowerState>(
+      body: BlocConsumer<ManpowerBloc, ManpowerState>(
           bloc: _manpowerBloc,
+          listener: (context, state) {
+            if (state is ManpowerDeletedState) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, "/manpower", (route) => false);
+            }
+          },
           builder: (context, state) {
             if (state is GetManpowerLoading) {
               return const Center(
@@ -58,21 +64,12 @@ class _ManpowerScreenState extends State<ManpowerScreen> {
                         child: ListTile(
                       onTap: () {
                         Navigator.pushNamed(context, '/employee-detail',
-                            arguments: EmployeeModel(
-                              id: manpower[index].id.toString(),
-                              name: manpower[index].employee!.name,
-                              email: manpower[index].employee!.email,
-                              phone: manpower[index].employee!.phone,
-                              role: manpower[index].employee!.role,
-                              gender: manpower[index].gender,
-                              material: manpower[index].maritalStatus,
-                              department: manpower[index].department!.name,
-                            ));
+                            arguments: manpower[index]);
                       },
                       leading: const CircleAvatar(),
                       title: Text(manpower[index].employee!.name!),
                       subtitle: Text(manpower[index].employee!.email!),
-                      trailing: const _buildPopUp(),
+                      trailing: _buildPopUp(manpower, index),
                     ));
                   });
             }
@@ -91,15 +88,8 @@ class _ManpowerScreenState extends State<ManpowerScreen> {
       ),
     );
   }
-}
 
-class _buildPopUp extends StatelessWidget {
-  const _buildPopUp({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+  PopupMenuButton<String> _buildPopUp(List<ManpowerModel> manpower, int index) {
     return PopupMenuButton<String>(
       elevation: 5,
       surfaceTintColor: Colors.white,
@@ -108,7 +98,11 @@ class _buildPopUp extends StatelessWidget {
       icon: const Icon(Icons.more_vert),
       onSelected: (value) {
         if (value == "edit") {
-        } else if (value == "delete") {}
+          Navigator.pushNamed(context, '/manpower_add',
+              arguments: manpower[index]);  
+        } else if (value == "delete") {
+          _manpowerBloc.add(ManpowerDeleteEvent(manpower[index].id.toString()));
+        }
       },
       itemBuilder: (BuildContext context) {
         return [

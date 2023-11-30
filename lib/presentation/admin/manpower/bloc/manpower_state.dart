@@ -26,4 +26,20 @@ class ManpowerTriggerState extends ManpowerState {
   ManpowerTriggerState({this.index = 0});
 }
 
-class ManpowerAddState extends ManpowerState {}
+class ManpowerAddState extends ManpowerState {
+  final String message;
+  ManpowerAddState(this.message);
+}
+class ManpowerUpdateState extends ManpowerState {
+  final String message;
+  ManpowerUpdateState(this.message);
+}
+
+class ManpowerDeletedState extends ManpowerState{
+  final String message;
+  ManpowerDeletedState(this.message);
+}
+
+class SelectDateState extends ManpowerState {}
+
+

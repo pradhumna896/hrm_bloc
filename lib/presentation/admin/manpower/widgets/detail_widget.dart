@@ -2,11 +2,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/app_export.dart';
-import '../model/Employee_model.dart';
 
 class DetailWidget extends StatelessWidget {
-  final EmployeeModel users;
-  const DetailWidget({super.key, required this.users});
+  final users;
+  const DetailWidget({super.key, this.users});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class DetailWidget extends StatelessWidget {
                     color: Colors.black12, offset: Offset(0, 2), blurRadius: 10)
               ]),
           child: Text(
-            users.role.toString(),
+            users.employee.role,
             style: TextStyle(
                 color: Colors.green,
                 fontSize: 20.sp,
@@ -58,27 +57,27 @@ class DetailWidget extends StatelessWidget {
             SizedBox(
               height: 10.h,
             ),
-            _buildLabel("Name", users.name),
+            _buildLabel("Name", users.employee.name),
             SizedBox(
               height: 5.h,
             ),
-            _buildLabel("Email", users.email),
+            _buildLabel("Email", users.employee.email),
             SizedBox(
               height: 5.h,
             ),
-            _buildLabel("Phone", users.phone),
+            _buildLabel("Phone", users.employee.phone),
             SizedBox(
               height: 5.h,
             ),
-            _buildLabel("Role", users.role),
+            _buildLabel("Role", users.employee.role),
             SizedBox(
               height: 5.h,
             ),
-            _buildLabel("Department", users.department),
+            _buildLabel("Department", users.department.name),
             SizedBox(
               height: 5.h,
             ),
-            _buildLabel("Material", users.material)
+            _buildLabel("Material", users.maritalStatus)
           ],
         )
       ]),

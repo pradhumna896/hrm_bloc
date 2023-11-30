@@ -69,6 +69,26 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('department'),
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/department',
+                (route) => false,
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Project'),
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/project',
+                (route) => false,
+              );
+            },
+          ),
         ],
       ),
     );

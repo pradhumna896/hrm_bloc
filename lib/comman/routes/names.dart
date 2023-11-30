@@ -14,4 +14,12 @@ class AppRoutes {
   static const MANPOWER_ADD = "/manpower_add";
 
   static const EMPLOYEE_DETAILS = "/employee-detail";
+
+  static const DEPARTMENT = "/department";
+
+  static const DEPARTMENT_ADD = "/addDepartment";
+
+  static const PROJECT = "/project";
+
+  static const PROJECT_ADD = "/addProject";
 }
