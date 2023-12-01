@@ -89,6 +89,16 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('Roles'),
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/roles',
+                (route) => false,
+              );
+            },
+          ),
         ],
       ),
     );

@@ -22,4 +22,8 @@ class AppRoutes {
   static const PROJECT = "/project";
 
   static const PROJECT_ADD = "/addProject";
+
+  static const ROLES = "/roles";
+
+  static const ROLES_ADD = "/addRole";
 }

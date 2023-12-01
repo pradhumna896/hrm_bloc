@@ -186,7 +186,7 @@ class Department {
 
   factory Department.fromJson(Map<String, dynamic> json) => Department(
         id: json["id"],
-        name: json["name"],
+        name: json["name"]??"N/A",
         description: json["description"],
         status: json["status"],
         deletedAt: json["deleted_at"],

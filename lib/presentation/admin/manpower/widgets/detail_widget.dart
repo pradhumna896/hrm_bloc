@@ -73,7 +73,8 @@ class DetailWidget extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
-            _buildLabel("Department", users.department.name),
+            _buildLabel("Department",
+                users.department != null ? users.department.name : "N/A"),
             SizedBox(
               height: 5.h,
             ),

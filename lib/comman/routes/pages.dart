@@ -13,6 +13,11 @@ import 'package:hrm_bloc/presentation/admin/projects/blocs/add_project/add_proje
 import 'package:hrm_bloc/presentation/admin/projects/blocs/project/project_bloc.dart';
 import 'package:hrm_bloc/presentation/admin/projects/screen/add_project_screen.dart';
 import 'package:hrm_bloc/presentation/admin/projects/screen/project_screen.dart';
+import 'package:hrm_bloc/presentation/admin/roles/blocs/add_roles/add_roles_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/roles/blocs/roles/roles_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/roles/blocs/select_permission/select_permission_bloc.dart';
+import 'package:hrm_bloc/presentation/admin/roles/screen/add_roles.dart';
+import 'package:hrm_bloc/presentation/admin/roles/screen/roles_screen.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_bloc.dart';
 import 'package:hrm_bloc/presentation/assessment/board/board_screen.dart';
 import 'package:hrm_bloc/presentation/auth/bloc/auth_bloc.dart';
@@ -101,7 +106,24 @@ class AppPages {
           bloc: BlocProvider(
             create: (context) => AddProjectBloc(),
           )),
-
+      PageEntity(
+          path: AppRoutes.ROLES,
+          page: const RolesScreen(),
+          bloc: BlocProvider(
+            create: (context) => RolesBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.ROLES_ADD,
+          page: const AddRoleScreen(),
+          bloc: BlocProvider(
+            create: (context) => AddRolesBloc(),
+          )),
+      PageEntity(
+          path: "addPermission",
+          page:  Container(),
+          bloc: BlocProvider(
+            create: (context) => SelectPermissionBloc(),
+          )),
     ];
   }
 
