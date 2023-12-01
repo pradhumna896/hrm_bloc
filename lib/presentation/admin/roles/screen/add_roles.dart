@@ -28,9 +28,17 @@ class _AddRoleScreenState extends State<AddRoleScreen> {
 
   final formKey = GlobalKey<FormState>();
   final roleController = TextEditingController();
+  var permission;
+  getData(context) {
+    permission = ModalRoute.of(context)!.settings.arguments;
+    roleController.text = permission.name!;
+    _selectPermissionBloc.add(PermissionAddAll(
+        permission.permissions!.map((e) => e.id.toString()).toList()));
+  }
 
   @override
   Widget build(BuildContext context) {
+    if (ModalRoute.of(context)!.settings.arguments != null) getData(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Add Role"),
@@ -48,6 +56,13 @@ class _AddRoleScreenState extends State<AddRoleScreen> {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   backgroundColor: Colors.green,
                   content: Text("Role Created Successfully")));
+              Navigator.pushNamedAndRemoveUntil(
+                  context, "/roles", (route) => false);
+            }
+            if (state is UpdateRolesState) {
+              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text("Role Updated Successfully")));
               Navigator.pushNamedAndRemoveUntil(
                   context, "/roles", (route) => false);
             }
@@ -290,12 +305,20 @@ class _AddRoleScreenState extends State<AddRoleScreen> {
                                     child: Text("Submit"),
                                     onPressed: () {
                                       if (formKey.currentState!.validate()) {
-                                        _addRolesBloc.add(CreateRoleEvent(
-                                            roleController.text,
-                                            stateSelect
-                                                    is SelectPermissionInitial
-                                                ? stateSelect.addPermission
-                                                : []));
+                                        permission == null
+                                            ? _addRolesBloc.add(CreateRoleEvent(
+                                                roleController.text,
+                                                stateSelect
+                                                        is SelectPermissionInitial
+                                                    ? stateSelect.addPermission
+                                                    : []))
+                                            : _addRolesBloc.add(UpdateRoleEvent(
+                                                roleController.text,
+                                                stateSelect
+                                                        is SelectPermissionInitial
+                                                    ? stateSelect.addPermission
+                                                    : [],
+                                                permission.slug));
                                       }
                                     },
                                   ))

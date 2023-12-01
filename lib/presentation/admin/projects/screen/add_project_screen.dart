@@ -52,7 +52,7 @@ class _AddProjectState extends State<AddProject> {
     if (ModalRoute.of(context)!.settings.arguments != null) getData(context);
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Add Department'),
+          title: const Text('Add Project'),
           leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -133,7 +133,7 @@ class _AddProjectState extends State<AddProject> {
                             CustomDropdown(
                               labelText: "Project Type",
                               listName: const ["internal", "external"],
-                              selectedItem: status,
+                              selectedItem: type,
                                 
                               onChng: (value) {
                                 type = value;
@@ -145,7 +145,7 @@ class _AddProjectState extends State<AddProject> {
                             CustomDropdown(
                               labelText: "Project Status",
                               listName: const ["active", "inactive"],
-                             selectedItem: type,
+                             selectedItem: status,
                               onChng: (value) {
                                 status = value;
                               },

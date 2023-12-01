@@ -14,6 +14,7 @@ class AddRolesBloc extends Bloc<AddRolesEvent, AddRolesState> {
   AddRolesBloc() : super(AddRolesInitialStae()) {
     on<AddRolesInitialEvent>(_getPermission);
     on<CreateRoleEvent>(_createRoles);
+    on<UpdateRoleEvent>(_updateRoles);
   }
 
   FutureOr<void> _getPermission(
@@ -50,6 +51,29 @@ class AddRolesBloc extends Bloc<AddRolesEvent, AddRolesState> {
           await api.post(ApiNetwork.roleCreate, jsonEncode(payload), true);
       if (value["success"] == true) {
         emit(CreateRolesState());
+      } else {
+        emit(AddRolesListFailedState(value["message"]));
+      }
+    } catch (e) {
+      emit(AddRolesListFailedState(e.toString()));
+    }
+  }
+
+  FutureOr<void> _updateRoles(
+    UpdateRoleEvent event,
+    Emitter<AddRolesState> emit,
+  ) async {
+    final payload = {
+      "name": event.name,
+      "permissions": event.permissions,
+    };
+    print(payload);
+    try {
+      emit(AddRolesLoadingState());
+      var value = await api.put(
+          ApiNetwork.roleUpdate + event.slug, jsonEncode(payload), true);
+      if (value["success"] == true) {
+        emit(UpdateRolesState());
       } else {
         emit(AddRolesListFailedState(value["message"]));
       }

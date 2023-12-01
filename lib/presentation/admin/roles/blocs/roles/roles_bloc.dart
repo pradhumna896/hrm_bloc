@@ -36,6 +36,7 @@ class RolesBloc extends Bloc<RolesEvent, RolesState> {
             RolesListSuccessState(value['payload']['data'].map<RolesModel>((e) {
           return RolesModel.fromJson(e);
         }).toList()));
+       
       } else {
         emit(RolesListFailedState(value["message"]));
       }

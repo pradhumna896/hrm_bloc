@@ -44,9 +44,12 @@ class AddProjectBloc extends Bloc<AddProjectEvent, AddProjectState> {
       UpdateProjectEvent event, Emitter<AddProjectState> emit) async {
     try {
       final payload = {
-        "name": event.name,
-        "description": event.description,
-        "status": event.status,
+         "end_date": event.endDate,
+        "project_description": event.description,
+        "project_name": event.name,
+        "project_status": event.status,
+        "project_type": event.type,
+        "start_date": event.startDate
       };
       print(payload);
       emit(ProjectLoadingState());

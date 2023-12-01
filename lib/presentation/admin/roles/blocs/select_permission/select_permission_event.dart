@@ -11,3 +11,8 @@ class PermissionRemove extends SelectPermissionEvent {
   final String id;
   PermissionRemove(this.id);
 }
+
+class PermissionAddAll extends SelectPermissionEvent {
+  final List<dynamic> id;
+  PermissionAddAll(this.id);
+}
