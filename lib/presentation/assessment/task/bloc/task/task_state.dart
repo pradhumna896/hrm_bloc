@@ -8,7 +8,7 @@ final class TaskInitial extends TaskState {}
 final class TaskLoading extends TaskState {}
 
 final class TaskLoaded extends TaskState {
-  final List<dynamic> tasks;
+  final List<TaskModel> tasks;
   TaskLoaded(this.tasks);
 }
 

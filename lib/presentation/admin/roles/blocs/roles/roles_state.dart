@@ -16,3 +16,8 @@ final class RolesListFailedState extends RolesState {
   final String message;
   RolesListFailedState(this.message) : super();
 }
+
+final class RoleDeleteSuccessState extends RolesState {
+  final String message;
+  RoleDeleteSuccessState(this.message) : super();
+}

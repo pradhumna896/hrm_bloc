@@ -14,6 +14,7 @@ class RolesBloc extends Bloc<RolesEvent, RolesState> {
   NetworkHttpServices api = NetworkHttpServices();
   RolesBloc() : super(RolesInitialState()) {
     on<RolesInitialEvent>(_getRoles);
+    on<RoleDeleteEvent>(_deleteRole);
   }
 
   FutureOr<void> _getRoles(
@@ -36,7 +37,21 @@ class RolesBloc extends Bloc<RolesEvent, RolesState> {
             RolesListSuccessState(value['payload']['data'].map<RolesModel>((e) {
           return RolesModel.fromJson(e);
         }).toList()));
-       
+      } else {
+        emit(RolesListFailedState(value["message"]));
+      }
+    } catch (e) {
+      emit(RolesListFailedState(e.toString()));
+    }
+  }
+
+  FutureOr<void> _deleteRole(
+      RoleDeleteEvent event, Emitter<RolesState> emit) async {
+    try {
+      emit(RolesLoadingState());
+      var value = await api.delete(ApiNetwork.roleDelete + event.slug);
+      if (value["success"] == true) {
+        emit(RoleDeleteSuccessState(value["message"]));
       } else {
         emit(RolesListFailedState(value["message"]));
       }

@@ -99,6 +99,16 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('task'),
+            onTap: () {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                '/task',
+                (route) => false,
+              );
+            },
+          ),
         ],
       ),
     );

@@ -20,6 +20,10 @@ import 'package:hrm_bloc/presentation/admin/roles/screen/add_roles.dart';
 import 'package:hrm_bloc/presentation/admin/roles/screen/roles_screen.dart';
 import 'package:hrm_bloc/presentation/assessment/board/bloc/board_bloc.dart';
 import 'package:hrm_bloc/presentation/assessment/board/board_screen.dart';
+import 'package:hrm_bloc/presentation/assessment/task/bloc/add_task/add_task_bloc.dart';
+import 'package:hrm_bloc/presentation/assessment/task/bloc/task/task_bloc.dart';
+import 'package:hrm_bloc/presentation/assessment/task/screen/add_task.dart';
+import 'package:hrm_bloc/presentation/assessment/task/screen/task_screen.dart';
 import 'package:hrm_bloc/presentation/auth/bloc/auth_bloc.dart';
 import 'package:hrm_bloc/presentation/auth/login_screen.dart';
 import 'package:hrm_bloc/presentation/home/bloc/home_bloc.dart';
@@ -120,9 +124,21 @@ class AppPages {
           )),
       PageEntity(
           path: "addPermission",
-          page:  Container(),
+          page: Container(),
           bloc: BlocProvider(
             create: (context) => SelectPermissionBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.TASK,
+          page: TaskScreen(),
+          bloc: BlocProvider(
+            create: (context) => TaskBloc(),
+          )),
+      PageEntity(
+          path: AppRoutes.TASK_ADD,
+          page: AddTask(),
+          bloc: BlocProvider(
+            create: (context) => AddTaskBloc(),
           )),
     ];
   }
