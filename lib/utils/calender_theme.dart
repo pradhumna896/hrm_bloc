@@ -3,7 +3,7 @@ import '../core/app_export.dart';
 calenderTheme(child, context) {
   return Theme(
       data: Theme.of(context).copyWith(
-          colorScheme: ColorScheme.light(
+          colorScheme: const ColorScheme.light(
               primary: Colors.orange,
               onPrimary: Colors.white,
               onSurface: Colors.grey),
